@@ -52,7 +52,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 		 for(Driver driver:driverList){
 			 Cab cab = driver.getCab();
-			 if(cab.isAvailable()){
+			 if(cab.getAvailable()){
               tripBooking.setDriver(driver);               //adding driver to tripbooking and at a same time updating the trip booking in driver entity
 			  List<TripBooking> list = driver.getTripBookingList();
 			  list.add(tripBooking);
