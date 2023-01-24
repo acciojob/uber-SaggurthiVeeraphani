@@ -5,26 +5,31 @@ import javax.persistence.*;
 @Entity
 @Table
 public class TripBooking {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int tripBookingId;
+
     private String fromLocation;
+
     private String toLocation;
+
     private int distanceInKm;
 
     @Enumerated(value = EnumType.STRING)
     private TripStatus tripStatus;
-    private int bill;
 
-    @ManyToOne
-    @JoinColumn
-    private Driver driver;
+    private int bill;
 
     @ManyToOne
     @JoinColumn
     private Customer customer;
 
-    public TripBooking(String fromLocation, String toLocation, int distanceInKm, TripStatus tripStatus) {
+    @ManyToOne
+    @JoinColumn
+    private Driver driver;
+
+    public TripBooking(String fromLocation, String toLocation,int distanceInKm,TripStatus tripStatus) {
         this.fromLocation = fromLocation;
         this.toLocation = toLocation;
         this.distanceInKm = distanceInKm;
@@ -66,11 +71,11 @@ public class TripBooking {
         this.distanceInKm = distanceInKm;
     }
 
-    public TripStatus getTripStatus() {
+    public TripStatus getStatus() {
         return tripStatus;
     }
 
-    public void setTripStatus(TripStatus tripStatus) {
+    public void setStatus(TripStatus tripStatus) {
         this.tripStatus = tripStatus;
     }
 
@@ -82,19 +87,19 @@ public class TripBooking {
         this.bill = bill;
     }
 
-    public Driver getDriver() {
-        return driver;
-    }
-
-    public void setDriver(Driver driver) {
-        this.driver = driver;
-    }
-
     public Customer getCustomer() {
         return customer;
     }
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
     }
 }
