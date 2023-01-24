@@ -21,9 +21,6 @@ public class Admin{
         this.password = password;
     }
      //Getters and Setters
-    public int getId() {
-        return adminId;
-    }
 
     public String getUsername() {
         return username;
@@ -33,11 +30,19 @@ public class Admin{
         this.username = username;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getPassword() {
-        return password;
+    public int getAdminId() {
+        return adminId;
+    }
+
+    public void setAdminId(int adminId) {
+        this.adminId = adminId;
     }
 }

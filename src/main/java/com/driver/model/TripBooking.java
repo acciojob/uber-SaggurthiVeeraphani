@@ -13,7 +13,7 @@ public class TripBooking {
     private int distanceInKm;
 
     @Enumerated(value = EnumType.STRING)
-    private TripStatus status;
+    private TripStatus tripStatus;
     private int bill;
 
     @ManyToOne
@@ -24,15 +24,22 @@ public class TripBooking {
     @JoinColumn
     private Customer customer;
 
+    public TripBooking(String fromLocation, String toLocation, int distanceInKm, TripStatus tripStatus) {
+        this.fromLocation = fromLocation;
+        this.toLocation = toLocation;
+        this.distanceInKm = distanceInKm;
+        this.tripStatus = tripStatus;
+    }
+
     public TripBooking() {
     }
 
-    public TripBooking(String fromlocation, String tolocation, int distanceInKM, TripStatus tripStatus, int bill) {
-        fromLocation = fromlocation;
-        toLocation = tolocation;
-        this.distanceInKm = distanceInKM;
-        this.status = tripStatus;
-        this.bill = bill;
+    public int getTripBookingId() {
+        return tripBookingId;
+    }
+
+    public void setTripBookingId(int tripBookingId) {
+        this.tripBookingId = tripBookingId;
     }
 
     public String getFromLocation() {
@@ -51,14 +58,6 @@ public class TripBooking {
         this.toLocation = toLocation;
     }
 
-    public int getDistanceInKM() {
-        return distanceInKm;
-    }
-
-    public void setDistanceInKM(int distanceInKM) {
-        distanceInKm = distanceInKM;
-    }
-
     public int getDistanceInKm() {
         return distanceInKm;
     }
@@ -67,8 +66,13 @@ public class TripBooking {
         this.distanceInKm = distanceInKm;
     }
 
+    public TripStatus getTripStatus() {
+        return tripStatus;
+    }
 
-
+    public void setTripStatus(TripStatus tripStatus) {
+        this.tripStatus = tripStatus;
+    }
 
     public int getBill() {
         return bill;
@@ -92,17 +96,5 @@ public class TripBooking {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-    public int getTripBookingId() {
-        return tripBookingId;
-    }
-
-    public TripStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(TripStatus status) {
-        this.status = status;
     }
 }

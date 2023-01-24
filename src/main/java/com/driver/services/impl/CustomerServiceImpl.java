@@ -46,7 +46,7 @@ public class CustomerServiceImpl implements CustomerService {
 		 tripBooking.setCustomer(customerRepository2.findById(customerId).get());
 		 tripBooking.setFromLocation(fromLocation);
 		 tripBooking.setToLocation(toLocation);
-		 tripBooking.setDistanceInKM(distanceInKm);
+		 tripBooking.setDistanceInKm(distanceInKm);
 		 List<Driver> driverList = driverRepository2.findAll();
 		 boolean driverBooked = false;
 
@@ -66,7 +66,7 @@ public class CustomerServiceImpl implements CustomerService {
 		 if(driverBooked == false){                           //Exception
 			 throw new Exception("No cab available!");
 		 }
-		 tripBooking.setStatus(TripStatus.CONFIRMED);      //set status
+		 tripBooking.setTripStatus(TripStatus.CONFIRMED);      //set status
 		 int bill = distanceInKm * 10;
 		 tripBooking.setBill(bill);        //set bill
 
@@ -84,7 +84,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public void cancelTrip(Integer tripId){
 		//Cancel the trip having given trip Id and update TripBooking attributes accordingly
       TripBooking tripBooking = tripBookingRepository2.findById(tripId).get();
-	  tripBooking.setStatus(TripStatus.CANCELED);
+	  tripBooking.setTripStatus(TripStatus.CANCELED);
 	  Driver driver = tripBooking.getDriver();
 	  Cab cab = driver.getCab();
 	  cab.setAvailable(true);
@@ -98,7 +98,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public void completeTrip(Integer tripId){
 		//Complete the trip having given trip Id and update TripBooking attributes accordingly
 		TripBooking tripBooking = tripBookingRepository2.findById(tripId).get();
-		tripBooking.setStatus(TripStatus.COMPLETED);
+		tripBooking.setTripStatus(TripStatus.COMPLETED);
 
 	}
 }
