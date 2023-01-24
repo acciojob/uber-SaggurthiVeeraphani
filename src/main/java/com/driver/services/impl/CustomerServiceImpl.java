@@ -44,11 +44,12 @@ public class CustomerServiceImpl implements CustomerService {
 		//Avoid using SQL query
          TripBooking tripBooking = new TripBooking();
 		 tripBooking.setCustomer(customerRepository2.findById(customerId).get());
-		 tripBooking.setFromlocation(fromLocation);
-		 tripBooking.setTolocation(toLocation);
+		 tripBooking.setFromLocation(fromLocation);
+		 tripBooking.setToLocation(toLocation);
 		 tripBooking.setDistanceInKM(distanceInKm);
 		 List<Driver> driverList = driverRepository2.findAll();
 		 boolean driverBooked = false;
+
 		 for(Driver driver:driverList){
 			 Cab cab = driver.getCab();
 			 if(cab.isAvailable()){
@@ -65,7 +66,7 @@ public class CustomerServiceImpl implements CustomerService {
 		 if(driverBooked == false){                           //Exception
 			 throw new Exception("No cab available!");
 		 }
-		 tripBooking.setTripStatus(TripStatus.CONFIRMED);      //set status
+		 tripBooking.setStatus(TripStatus.CONFIRMED);      //set status
 		 int bill = distanceInKm * 10;
 		 tripBooking.setBill(bill);        //set bill
 
@@ -83,7 +84,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public void cancelTrip(Integer tripId){
 		//Cancel the trip having given trip Id and update TripBooking attributes accordingly
       TripBooking tripBooking = tripBookingRepository2.findById(tripId).get();
-	  tripBooking.setTripStatus(TripStatus.CANCELED);
+	  tripBooking.setStatus(TripStatus.CANCELED);
 	  Driver driver = tripBooking.getDriver();
 	  Cab cab = driver.getCab();
 	  cab.setAvailable(true);
@@ -97,7 +98,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public void completeTrip(Integer tripId){
 		//Complete the trip having given trip Id and update TripBooking attributes accordingly
 		TripBooking tripBooking = tripBookingRepository2.findById(tripId).get();
-		tripBooking.setTripStatus(TripStatus.COMPLETED);
+		tripBooking.setStatus(TripStatus.COMPLETED);
 
 	}
 }

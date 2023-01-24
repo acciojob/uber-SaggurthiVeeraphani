@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Admin{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int adminId;
     private String username;
     private String password;
 
@@ -22,7 +22,7 @@ public class Admin{
     }
      //Getters and Setters
     public int getId() {
-        return id;
+        return adminId;
     }
 
     public String getUsername() {

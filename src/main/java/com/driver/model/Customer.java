@@ -8,7 +8,7 @@ import java.util.List;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int customerid;
     private String mobile;
     private String password;
 
@@ -24,7 +24,7 @@ public class Customer {
     }
 
     public int getId() {
-        return id;
+        return customerid;
     }
 
     public String getMobile() {

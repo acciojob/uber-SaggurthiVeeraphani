@@ -8,7 +8,7 @@ import java.util.List;
 public class Driver {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int driverid;
     private String mobile;
     private String password;
 
@@ -50,10 +50,12 @@ public class Driver {
     }
 
     public void setCab(Cab cab) {
+
         this.cab = cab;
     }
 
     public List<TripBooking> getTripBookingList() {
+
         return tripBookingList;
     }
 
@@ -62,6 +64,7 @@ public class Driver {
     }
 
     public int getId() {
-        return id;
+
+        return driverid;
     }
 }

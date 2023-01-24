@@ -7,13 +7,13 @@ import javax.persistence.*;
 public class TripBooking {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int TripId;
-    private String Fromlocation;
-    private String Tolocation;
-    private int DistanceInKM;
+    private int tripBookingId;
+    private String fromLocation;
+    private String toLocation;
+    private int distanceInKm;
 
     @Enumerated(value = EnumType.STRING)
-    private TripStatus tripStatus;
+    private TripStatus status;
     private int bill;
 
     @ManyToOne
@@ -28,45 +28,47 @@ public class TripBooking {
     }
 
     public TripBooking(String fromlocation, String tolocation, int distanceInKM, TripStatus tripStatus, int bill) {
-        Fromlocation = fromlocation;
-        Tolocation = tolocation;
-        DistanceInKM = distanceInKM;
-        this.tripStatus = tripStatus;
+        fromLocation = fromlocation;
+        toLocation = tolocation;
+        this.distanceInKm = distanceInKM;
+        this.status = tripStatus;
         this.bill = bill;
     }
 
-    public String getFromlocation() {
-
-        return Fromlocation;
+    public String getFromLocation() {
+        return fromLocation;
     }
 
-    public void setFromlocation(String fromlocation) {
-        Fromlocation = fromlocation;
+    public void setFromLocation(String fromLocation) {
+        this.fromLocation = fromLocation;
     }
 
-    public String getTolocation() {
-        return Tolocation;
+    public String getToLocation() {
+        return toLocation;
     }
 
-    public void setTolocation(String tolocation) {
-        Tolocation = tolocation;
+    public void setToLocation(String toLocation) {
+        this.toLocation = toLocation;
     }
 
     public int getDistanceInKM() {
-        return DistanceInKM;
+        return distanceInKm;
     }
 
     public void setDistanceInKM(int distanceInKM) {
-        DistanceInKM = distanceInKM;
+        distanceInKm = distanceInKM;
     }
 
-    public TripStatus getTripStatus() {
-        return tripStatus;
+    public int getDistanceInKm() {
+        return distanceInKm;
     }
 
-    public void setTripStatus(TripStatus tripStatus) {
-        this.tripStatus = tripStatus;
+    public void setDistanceInKm(int distanceInKm) {
+        this.distanceInKm = distanceInKm;
     }
+
+
+
 
     public int getBill() {
         return bill;
@@ -92,7 +94,15 @@ public class TripBooking {
         this.customer = customer;
     }
 
-    public int getTripId() {
-        return TripId;
+    public int getTripBookingId() {
+        return tripBookingId;
+    }
+
+    public TripStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(TripStatus status) {
+        this.status = status;
     }
 }
